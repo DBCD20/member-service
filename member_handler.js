@@ -3,7 +3,7 @@ const { Member } = require('./models');
 exports.getNameList = async function(req, res, next){
     try {
         const memList = await Member.find();
-        res.status(200).json(memList)
+        res.status(200).json(memList || [])
     }
     catch(err){
         return next({
