@@ -5,10 +5,10 @@ mongoose.Promise = Promise;
 mongoose.set("debug", true);
 
 let counter = 0;
-
+//"mongodb+srv://dbUser:mongodb123@cluster0-d8kwu.mongodb.net/test?retryWrites=true&w=majority" || 
 const DBconnect = function(){
     if(counter > 0) console.log(`\nReconnecting on the (${counter}) time.`);
-    mongoose.connect("mongodb+srv://dbUser:mongodb123@cluster0-d8kwu.mongodb.net/test?retryWrites=true&w=majority", {
+    mongoose.connect("mongodb://localhost/delex", {
     useNewUrlParser: true,
     keepAlive: true
 })

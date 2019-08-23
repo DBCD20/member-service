@@ -6,7 +6,16 @@ const PORT      = process.env.PORT || 3002;
 const CORS      = require('cors');
 const member    = require('./member_router');
 // const rateLimit = require('express-rate-limit');
+const { fork }  = require('child_process');
+const CPUs      = require('os').cpus();
+const cluster   = require('cluster');
 
+
+// if(cluster.isMaster){
+//     console.log("This is the master process ", process.pid);
+//     CPUs.forEach((cpu, i) => cluster.fork([`300${i}`]));
+// }
+// else {
 app.use(helmet());
 app.use(CORS());
 
@@ -38,3 +47,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => console.log(`MEMBER SERVICE CONNECTED TO PORT ${PORT}`))
+// }
+
